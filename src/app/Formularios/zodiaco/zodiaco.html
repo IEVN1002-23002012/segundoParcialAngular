@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Práctica Zodiaco</title>
+</head>
+<body>
+
+  <div class="contenedor-principal">
+    
+    <div class="formulario">
+      <div class="seccion-datos">
+        <p class="titulo-seccion">Datos Personales</p>
+        <div class="fila">
+          <label>Nombre</label>
+          <input type="text" [(ngModel)]="nombre" placeholder="Nombre">
+        </div>
+        <div class="fila">
+          <label>Apaterno</label>
+          <input type="text" [(ngModel)]="apaterno" placeholder="Apaterno">
+        </div>
+        <div class="fila">
+          <label>Amaterno</label>
+          <input type="text" [(ngModel)]="amaterno" placeholder="Amaterno">
+        </div>
+      </div>
+
+      <div class="seccion-fecha">
+        <p class="titulo-seccion">Fecha de nacimiento</p>
+        <div class="fila-fecha">
+          <div>
+            <label>Dia</label>
+            <input type="number" [(ngModel)]="dia">
+          </div>
+          <div>
+            <label>Mes</label>
+            <input type="number" [(ngModel)]="mes">
+          </div>
+          <div>
+            <label>Año</label>
+            <input type="number" [(ngModel)]="anio">
+          </div>
+        </div>
+      </div>
+
+      <div class="seccion-sexo">
+        <label>sexo</label>
+        <div>
+          <input type="radio" name="sexo" value="Masculino" [(ngModel)]="sexo"> Masculino<br>
+          <input type="radio" name="sexo" value="Femenino" [(ngModel)]="sexo"> Femenino
+        </div>
+      </div>
+
+      <button class="btn-imprimir" (click)="imprimir()">imprimir</button>
+    </div>
+    <div class="resultado" *ngIf="mostrarResultado">
+      <h2>Hola <em>{{ nombreCompleto }}</em></h2>
+      <p>Tienes <strong>{{ edadCalculada }}</strong> años</p>
+      <p>tu signo zodiacal</p>
+     <img [src]="signoImagen" alt="Imagen del signo" style="max-width: 150px; height: auto;">
+      <p>Es {{ signoNombre }}</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
