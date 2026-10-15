@@ -1,0 +1,102 @@
+<div class="max-w-6xl mx-auto mt-8 px-4">
+  
+  <!-- Encabezado y Botón de Regresar -->
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-bold text-gray-900">
+      Registros de Compras - Cinépolis
+    </h2>
+    <button
+      type="button"
+      routerLink="/escuela/cinepolis"
+      class="px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-lg hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300"
+    >
+      ← Volver al Registro
+    </button>
+  </div>
+
+  <!-- Tabla de Registros -->
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg border border-gray-200">
+    <table class="w-full text-sm text-left text-gray-500">
+      
+      <!-- Encabezado de la Tabla -->
+      <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+        <tr>
+          <th scope="col" class="px-6 py-3">Nombre</th>
+          <th scope="col" class="px-6 py-3">Compradores</th>
+          <th scope="col" class="px-6 py-3">Tarjeta Cineco</th>
+          <th scope="col" class="px-6 py-3">Boletas</th>
+          <th scope="col" class="px-6 py-3">Total Pagado</th>
+          <th scope="col" class="px-6 py-3 text-center">Acciones</th>
+        </tr>
+      </thead>
+
+      <!-- Datos Dinámicos -->
+      <tbody>
+        <!-- Mensaje si no hay registros -->
+        @if (compras.length === 0) {
+          <tr>
+            <td colspan="6" class="px-6 py-6 text-center text-gray-400 font-medium bg-white">
+              No hay compras registradas todavía.
+            </td>
+          </tr>
+        }
+
+        <!-- Filas de compras -->
+        @for (compra of compras; track $index) {
+          <tr class="bg-white border-b border-gray-200 hover:bg-gray-50">
+            
+            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+              {{ compra.nombre }}
+            </td>
+
+            <td class="px-6 py-4">
+              {{ compra.compradores }}
+            </td>
+
+            <td class="px-6 py-4 uppercase">
+              <span class="px-2.5 py-1 text-xs font-semibold rounded-full" 
+                    [class.bg-green-100]="compra.tarjetaCineco === 'si'"
+                    [class.text-green-800]="compra.tarjetaCineco === 'si'"
+                    [class.bg-red-100]="compra.tarjetaCineco === 'no'"
+                    [class.text-red-800]="compra.tarjetaCineco === 'no'">
+                {{ compra.tarjetaCineco }}
+              </span>
+            </td>
+
+            <td class="px-6 py-4">
+              {{ compra.boletas }}
+            </td>
+
+            <td class="px-6 py-4 font-bold text-green-700">
+              ${{ compra.total }}
+            </td>
+
+            <td class="px-6 py-4 text-center">
+              <div class="flex justify-center gap-2">
+                
+                <!-- Botón Eliminar -->
+                <button
+                  type="button"
+                  class="px-3 py-1.5 text-xs font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300"
+                  (click)="eliminarCompra($index)"
+                >
+                  Eliminar
+                </button>
+                <button
+                  type="button"
+                  class="px-3 py-1.5 text-xs font-medium text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300"
+                  (click)="editarCompra($index)"
+                >
+                  Editar
+                </button>
+
+              </div>
+            </td>
+
+          </tr>
+        }
+      </tbody>
+
+    </table>
+  </div>
+</div>

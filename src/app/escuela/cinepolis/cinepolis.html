@@ -51,25 +51,18 @@
       </div>
 
       <!-- ACCIONES -->
-      <div style="text-align: center; margin-bottom: 20px;">
+      <div style="text-align: center; margin-bottom: 10px;">
         <button type="submit" style="padding: 10px 20px; font-weight: bold; cursor: pointer;">
           Procesar
         </button>
       </div>
 
     </form>
-
-    <!-- LISTA DE DATOS ABAJO -->
-    @if (datosGuardados) {
-      <div style="border-top: 2px solid #ccc; padding-top: 15px; margin-top: 15px;">
-        <h2 style="font-size: 1.2rem; margin-bottom: 10px;">Lista Compra</h2>
-        <p style="margin: 4px 0;"><strong>nombre:</strong> {{ datosGuardados.nombre }}</p>
-        <p style="margin: 4px 0;"><strong>compradores:</strong> {{ datosGuardados.compradores }}</p>
-        <p style="margin: 4px 0;"><strong>tarjeta cineco:</strong> {{ datosGuardados.tarjetaCineco }}</p>
-        <p style="margin: 4px 0;"><strong>boletas:</strong> {{ datosGuardados.boletas }}</p>
-        <p style="margin: 4px 0;"><strong>total a pagar:</strong> ${{ datosGuardados.total }}</p>
-      </div>
-    }
+   <div style="text-align: center; margin-bottom: 20px;">
+  <button type="button" routerLink="/escuela/ver-registro" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background: #333; color: white; border: none; border-radius: 4px;">
+    Ver registros
+  </button>
+</div>
 
   </div>
 </div>
